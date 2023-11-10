@@ -27,7 +27,7 @@ services:
       - 3031:3031
       - 9220:9229
     networks:
-      - byfal-network
+      - zombie-network
 
   game-db:
     # build:
