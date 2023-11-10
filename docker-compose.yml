@@ -1,0 +1,85 @@
+version: "3.8"
+
+services:
+  # NestJS Backend
+  backend-api:
+    build:
+      dockerfile: Dockerfile
+      context: ./apps/backend/
+      target: development
+    container_name: backend-api
+    volumes:
+      - ./apps/backend:/zombie-runner/src/backend
+      - /zombie-runner/src/backend/node_modules
+    # dev mode: npm run start:dev / debug: npm run start:debug
+    command: npm run start:dev
+    depends_on:
+      - game-db
+      - redis
+    environment:
+      NODE_ENV: development
+      DB_HOST: game-db
+      DB_PORT: 5432
+      DB_USERNAME: user
+      DB_PASSWORD: 123456
+      DB_DATABASE: game
+    ports:
+      - 3031:3031
+      - 9220:9229
+    networks:
+      - byfal-network
+
+  game-db:
+    # build:
+    #   context: ./dev-tools/db
+    #   dockerfile: Dockerfile
+    image: postgres:14.4
+    environment:
+      # POSTGRES_MULTIPLE_DATABASES: db,game
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: game
+    ports:
+      - 35001:5432
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      # - ./dev-tools/db:/docker-entrypoint-initdb.d
+    networks:
+      - zombie-network
+
+  # meat_db_admin:
+  #   image: dpage/pgadmin4:6.12
+  #   depends_on:
+  #     - meat_db
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: password
+  #   ports:
+  #     - 5050:80
+
+  zombie-adminer:
+    image: adminer:4.8.0
+    container_name: zombie-adminer
+    restart: always
+    ports:
+      - 3033:8080
+    networks:
+      - zombie-network
+    depends_on:
+      - game-db
+
+  redis:
+    image: redis
+    command: /bin/sh -c "redis-server --requirepass $$REDIS_PASS"
+    env_file:
+      - .env
+    ports:
+      - 6379:6379
+    volumes:
+      - .redis/data:/data
+    networks:
+      - zombie-network
+
+networks:
+  zombie-network:
+    driver: bridge

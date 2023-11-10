@@ -1,0 +1,17 @@
+.git
+.github
+.vscode
+DockerFiles
+Makefile
+Readme.md
+.idea
+.terraform
+
+**/.nuxt
+**/dist/
+**/node_modules/
+**/test
+**/.gitignore
+**/.prettierrc
+**/nest-cli.json
+**/vue-shim.d.ts
