@@ -10,6 +10,7 @@ async function bootstrap() {
   console.log('transactionsl made');
   initializeTransactionalContext();
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   const config = await app.get(ConfigService);
 
   app.setGlobalPrefix('api');
