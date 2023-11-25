@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomeScreen } from './screens/HomeScreen';
-import { AboutScreen } from './screens/AboutScreen';
-import { GameScreen } from './screens/GameScreen';
-import { TopPlayersScreen } from './screens/TopPlayersScreen';
-import { ReviewsScreen } from './screens/ReviewsScreen';
+import { HomeScreen } from './screens/HomeScreen/HomeScreen';
+import { AboutScreen } from './screens/AboutScreen/AboutScreen';
+import { GameScreen } from './screens/GameScreen/GameScreen';
+import { TopPlayersScreen } from './screens/TopPlayersScreen/TopPlayersScreen';
+import { ReviewsScreen } from './screens/ReviewsScreen/ReviewsScreen';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import './App.css';

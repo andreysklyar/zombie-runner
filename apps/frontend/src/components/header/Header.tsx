@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './assets/header.module.scss';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface Props {}
 
@@ -9,21 +9,22 @@ const Header: React.FunctionComponent<Props> = React.memo(() => (
     <header className={styles.mainHeader}>
         <div className='container'>
             <nav className={styles.mainNav}>
+                {/* TODO: make loop */}
                 <ul className={styles.mainNavList}>
                     <li className={styles.mainNavLi}>
-                        <Link to="/">Home</Link>
+                        <NavLink to="/" className={({ isActive }) => (isActive ? styles.mainNavLinkActive : styles.mainNavLink)}>Home</NavLink>
                     </li>
                     <li className={styles.mainNavLi}>
-                        <Link to="about">About</Link>
+                        <NavLink to="/about" className={({ isActive }) => (isActive ? styles.mainNavLinkActive : styles.mainNavLink)}>About</NavLink>
                     </li>
                     <li className={styles.mainNavLi}>
-                        <Link to="game">Game</Link>
+                        <NavLink to="/game" className={({ isActive }) => (isActive ? styles.mainNavLinkActive : styles.mainNavLink)}>Game</NavLink>
                     </li>
                     <li className={styles.mainNavLi}>
-                        <Link to="top">Top players</Link>
+                        <NavLink to="/top" className={({ isActive }) => (isActive ? styles.mainNavLinkActive : styles.mainNavLink)}>Top players</NavLink>
                     </li>
                     <li className={styles.mainNavLi}>
-                        <Link to="reviews">Reviews</Link>
+                        <NavLink to="/reviews" className={({ isActive }) => (isActive ? styles.mainNavLinkActive : styles.mainNavLink)}>Reviews</NavLink>
                     </li>
                 </ul>
             </nav>

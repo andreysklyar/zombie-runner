@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../../components/header/Header';
 
-export const GameScreen: FunctionComponent = () => {
+export const AboutScreen: FunctionComponent = () => {
     return (
         <div>
-            Game page
+            <Header />
+            About page
         </div>
     );
 }
