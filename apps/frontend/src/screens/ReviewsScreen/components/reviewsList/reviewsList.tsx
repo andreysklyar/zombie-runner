@@ -23,7 +23,7 @@ const ReviewsList: React.FunctionComponent<Props> = () => {
 
     useEffect(() => {
         if (review?.id) {
-            console.log(review, ' -- review');
+            console.log(review, ' : last review');
             dispatch(fetchReviews());
         }
     }, [review, dispatch]);

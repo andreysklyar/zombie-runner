@@ -22,6 +22,8 @@ export const createReview = (newReview: NewReview): any => {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/review`, newReview);
             console.log(response);
             dispatch({type: AddReviewActionTypes.FETCH_ADD_REVIEW_SUCCESS, payload: response.data});
+            // setTimeout(() => {
+            // }, 5000);
         } catch(e) {
             dispatch({type: AddReviewActionTypes.FETCH_ADD_REVIEW_ERROR, payload: 'Server error'});
         }
