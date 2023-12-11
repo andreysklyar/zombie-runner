@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Form } from 'react-bootstrap';
 import { ControledInput } from '../../../../components/inputs/ControledInput';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 
 interface Props {
 }
@@ -19,7 +20,8 @@ interface FormData extends NewReview {};
 
 const ReviewForm: React.FunctionComponent<Props> = () => {
   const {loading, review} = useTypedSelector(addReviewSelector);
-  const dispatch = useDispatch();
+  // TODO: check ThunkDispatch
+  const dispatch = useDispatch<ThunkDispatch<any, NewReview, any>>();
   // const [error, setError] = useState(null);
 
   const validationSchema = yup.object().shape({

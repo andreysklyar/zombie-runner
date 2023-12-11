@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { Dispatch, useEffect } from 'react';
 import styles from './assets/reviewsList.module.scss';
 import classNames from 'classnames';
 import ReviewItem from '../reviewItem/reviewItem';
 import { Review } from '../../../../types/reviews';
 import { reviewsSelector } from '../../../../store/selectors/reviews';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import { useDispatch } from '../../../../hooks/dispatch';
 import { fetchReviews } from '../../../../store/thunks/reviews-thunk';
 import { addReviewSelector } from '../../../../store/selectors/addReview';
 
@@ -18,13 +18,14 @@ const ReviewsList: React.FunctionComponent<Props> = () => {
     console.log(review);
 
     useEffect(() => {
-        dispatch(fetchReviews());
+        // TODO: Any
+        dispatch<any>(fetchReviews());
     }, [dispatch]);
 
     useEffect(() => {
         if (review?.id) {
             console.log(review, ' : last review');
-            dispatch(fetchReviews());
+            dispatch<any>(fetchReviews());
         }
     }, [review, dispatch]);
 

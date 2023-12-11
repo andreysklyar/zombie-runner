@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { reviewsReduser } from "./reviewsReduser";
-import { addReviewReduser } from "./addReviewReduser";
+import reviews from "./reviewsReduser";
+import addReview from "./addReviewReduser";
 
 export const rootReducer = combineReducers({
-    reviews: reviewsReduser,
-    newReview: addReviewReduser
+    reviews: reviews,
+    newReview: addReview
 })
 
 export type RootState = ReturnType<typeof rootReducer>

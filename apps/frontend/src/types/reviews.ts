@@ -14,7 +14,7 @@ interface FetchReviewsSuccess {
     payload: Array<Review>
 }
 
-interface FetchReviewsError {
+export interface FetchReviewsError {
     type: ReviewsActionTypes.FETCH_REVIEWS_ERROR
     payload: string | null
 }
@@ -23,6 +23,16 @@ export interface Review {
     name: string
     review: string
     id: string
+}
+export interface Reviews {
+    items: Review[]
+    meta: {
+        totalItems: number,
+        itemCount: number,
+        itemsPerPage: number,
+        totalPages: number,
+        currentPage: number
+    }
 }
 
 export interface ReviewsState {
