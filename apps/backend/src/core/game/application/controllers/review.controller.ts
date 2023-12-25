@@ -12,7 +12,7 @@ import { Pagination } from 'nestjs-typeorm-paginate';
 import { CreateReviewDTO } from '../dtos/create-review.dto';
 import { UpdateReviewDTO } from '../dtos/update-review.dto';
 
-@ApiTags('Game WS')
+@ApiTags('Review WS')
 @Controller('/review/')
 export class ReviewController {
   constructor(

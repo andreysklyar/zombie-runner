@@ -6,8 +6,8 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 
 // name form database
-@Entity('review')
-export class ReviewEntity {
+@Entity('players')
+export class PlayerEntity {
   @ApiProperty()
   @PrimaryColumn('varchar', { nullable: false })
   id: string;
@@ -18,5 +18,5 @@ export class ReviewEntity {
 
   @ApiProperty()
   @Column('varchar', { nullable: false })
-  review: string;
+  score: string;
 }
