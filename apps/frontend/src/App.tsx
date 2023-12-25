@@ -7,7 +7,6 @@ import { TopPlayersScreen } from './screens/TopPlayersScreen/TopPlayersScreen';
 import { ReviewsScreen } from './screens/ReviewsScreen/ReviewsScreen';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import './App.css';
 
 function App() {
   return (

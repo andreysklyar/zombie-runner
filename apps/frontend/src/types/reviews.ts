@@ -75,4 +75,10 @@ interface FetchAddReviewError {
     payload: string | null
 }
 
+export interface AiReview {
+    review: string
+    loading: boolean
+    error: string | null
+}
+
 export type CreateReviewAction = FetchAddReview | FetchAddReviewSuccess | FetchAddReviewError

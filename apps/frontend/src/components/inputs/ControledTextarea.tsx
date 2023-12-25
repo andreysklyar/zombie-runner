@@ -6,10 +6,10 @@ import { Control, Controller, FieldError, FieldValues } from 'react-hook-form'
 import InputError from './InputError'
 import { NewReview } from '../../types/reviews'
 
-interface ControledInputProps
+interface ControledTextareaProps
   extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
+    React.InputHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
   > {
   name: string
   control: Control<any, any>
@@ -22,7 +22,7 @@ interface ControledInputProps
   containerClass?: HTMLAttributes<HTMLDivElement>['className']
 }
 
-export const ControledInput: React.FunctionComponent<ControledInputProps> = ({
+export const ControledTextarea: React.FunctionComponent<ControledTextareaProps> = ({
   label,
   labelClass,
   className,
@@ -41,7 +41,7 @@ export const ControledInput: React.FunctionComponent<ControledInputProps> = ({
       defaultValue={rest.defaultValue || ''}
       render={({ field }) => (
         <div>
-          <input
+          <textarea
             className={classNames(
               'form-control',
               error?.message && 'is-invalid',

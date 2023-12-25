@@ -1,12 +1,20 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FunctionComponent, useState } from 'react';
 import Header from '../../components/header/Header';
+import Game from '../../game/Game';
+import StartGameForm from './components/startGameForm';
+
 
 export const GameScreen: FunctionComponent = () => {
+    const [firstStep, setFirstStep] = useState(true);
+
     return (
-        <div>
-            <Header />
-            Game page
-        </div>
+        <>
+            <Header extraClass="mb-0" />
+            {!firstStep ? (
+                <StartGameForm />
+            ) : (
+                <Game />
+            )}
+        </>
     );
 }

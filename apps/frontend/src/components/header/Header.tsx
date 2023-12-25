@@ -3,10 +3,12 @@ import styles from './assets/header.module.scss';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
-interface Props {}
+interface Props {
+    extraClass?: string
+}
 
-const Header: React.FunctionComponent<Props> = React.memo(() => (
-    <header className={styles.mainHeader}>
+const Header: React.FunctionComponent<Props> = React.memo(({extraClass}) => (
+    <header className={classNames(styles.mainHeader, extraClass ?? '')}>
         <div className='container'>
             <nav className={styles.mainNav}>
                 {/* TODO: make loop */}

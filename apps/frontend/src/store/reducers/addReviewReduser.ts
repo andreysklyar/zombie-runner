@@ -26,7 +26,7 @@ export const initialState: CreateReviewState = {
 // }
 
 
-const addReviewslise = createSlice({
+const addReviewSlice = createSlice({
     name: 'addReview',
     initialState: initialState,
     reducers: {},
@@ -57,4 +57,4 @@ const addReviewslise = createSlice({
     }
 });
 
-export default addReviewslise.reducer;
+export default addReviewSlice.reducer;
