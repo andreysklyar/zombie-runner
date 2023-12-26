@@ -1,21 +1,7 @@
-import { Dispatch } from "redux"
-import { ReviewsActionTypes, ReviewsAction, CreateReviewAction, AddReviewActionTypes, NewReview, Review, Reviews } from "../../types/reviews"
+import { NewReview, Review, Reviews } from "../../types/reviews"
 import axios from 'axios'
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import OpenAI from "openai";
-
-/*export const fetchReviews = (): any => {
-    console.log('fetch all');
-    return async (dispatch: Dispatch<ReviewsAction>): Promise<void> => {
-        try {
-            dispatch({type: ReviewsActionTypes.FETCH_REVIEWS});
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/review`);
-            dispatch({type: ReviewsActionTypes.FETCH_REVIEWS_SUCCESS, payload: response.data.items});
-        } catch(e) {
-            dispatch({type: ReviewsActionTypes.FETCH_REVIEWS_ERROR, payload: 'Server error'});
-        }
-    }
-}*/
 
 export const fetchReviews = createAsyncThunk(
     'reviews/get',
@@ -27,21 +13,6 @@ export const fetchReviews = createAsyncThunk(
         return response.data;
     }
 );
-
-/*export const createReview = (newReview: NewReview): any => {
-    return async (dispatch: Dispatch<CreateReviewAction>): Promise<void> => {
-        try {
-            dispatch({type: AddReviewActionTypes.FETCH_ADD_REVIEW});
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/review`, newReview);
-            console.log(response);
-            dispatch({type: AddReviewActionTypes.FETCH_ADD_REVIEW_SUCCESS, payload: response.data});
-            // setTimeout(() => {
-            // }, 5000);
-        } catch(e) {
-            dispatch({type: AddReviewActionTypes.FETCH_ADD_REVIEW_ERROR, payload: 'Server error'});
-        }
-    }
-}*/
 
 export const createReview = createAsyncThunk(
     'reviews/add',
@@ -75,8 +46,6 @@ export const generateReview = createAsyncThunk(
           console.log(response);
 
           return response.choices[0].message.content || '';
-      
-        //   setValue("review", (response.choices[0].message.content || ''));
         }
 
         catch (e) {

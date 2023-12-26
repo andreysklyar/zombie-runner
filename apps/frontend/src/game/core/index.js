@@ -3,9 +3,7 @@ import Bg from "./bg";
 export default class GameCore {
     constructor(app) {
         this.app = app;
-        console.log('Game');
-        // this.bgContainer = new Bg();
-        // this.app.stage.addChild(this.bgContainer);
+        console.log('GameCore');
         this.app.stage.addChild(new Bg(app));
     }
 

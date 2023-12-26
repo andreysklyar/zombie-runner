@@ -4,6 +4,8 @@ import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { ControledInput } from '../../../components/inputs/ControledInput';
+import { useDispatch } from '../../../hooks/dispatch';
+import { setPlayerName } from '../../../store/reducers/playerReduser';
 
 interface Props {
 }
@@ -13,24 +15,28 @@ interface FormData {
 };
 
 const StartGameForm: React.FunctionComponent<Props> = () => {
+    const dispatch = useDispatch();
     const validationSchema = yup.object().shape({
       name: yup.string()
           .min(3, 'Must be 3 characters minimum')
           .max(15, 'Must be 15 characters or less')
-          .required('required')
+          .required('Required')
     });
 
     const {
       handleSubmit,
       control,
-      formState: { errors }
+      formState: { errors },
+      getValues
     } = useForm<FormData>({
       resolver: yupResolver(validationSchema)
     });
 
     const onSubmitHandler = useCallback(() => {
-        
-    }, []);
+        const name: string = getValues('name');
+        // Save new player name
+        dispatch(setPlayerName(name));
+    }, [dispatch, getValues]);
  
     return (
         <Form
