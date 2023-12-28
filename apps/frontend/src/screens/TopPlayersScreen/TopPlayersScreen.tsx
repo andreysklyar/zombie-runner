@@ -1,10 +1,15 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FunctionComponent } from 'react';
+import Header from '../../components/header/Header';
+import PlayersList from './components/PlayersList';
 
 export const TopPlayersScreen: FunctionComponent = () => {
     return (
         <div>
-            <h1>Top players page</h1>
+            <Header />
+            <div className="container">
+                <h1>Top players page</h1>
+                <PlayersList />
+            </div>
         </div>
     );
 }

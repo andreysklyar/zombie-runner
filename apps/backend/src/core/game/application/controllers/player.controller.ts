@@ -13,7 +13,7 @@ import { PlayerEntity } from '../../domain/entities/player.entity';
 import { PlayerService } from '../../domain/services/player.service';
 
 @ApiTags('Top players WS')
-@Controller('/player/')
+@Controller('/players/')
 export class PlayerController {
   constructor(
     private readonly playerService: PlayerService

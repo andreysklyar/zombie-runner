@@ -1,10 +1,7 @@
 import classNames from 'classnames'
-import { useField } from 'formik'
-import React, { ComponentClass, FunctionComponent, HTMLAttributes } from 'react'
-import ReactDOMServer from 'react-dom/server'
-import { Control, Controller, FieldError, FieldValues } from 'react-hook-form'
+import React, { HTMLAttributes } from 'react'
+import { Control, Controller, FieldError } from 'react-hook-form'
 import InputError from './InputError'
-import { NewReview } from '../../types/reviews'
 
 interface ControledInputProps
   extends React.DetailedHTMLProps<
@@ -40,7 +37,7 @@ export const ControledInput: React.FunctionComponent<ControledInputProps> = ({
       name={rest.name}
       defaultValue={rest.defaultValue || ''}
       render={({ field }) => (
-        <div>
+        <div className={classNames(containerClass ?? '')}>
           <input
             className={classNames(
               'form-control',

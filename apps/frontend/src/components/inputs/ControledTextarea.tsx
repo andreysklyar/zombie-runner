@@ -40,7 +40,7 @@ export const ControledTextarea: React.FunctionComponent<ControledTextareaProps> 
       name={rest.name}
       defaultValue={rest.defaultValue || ''}
       render={({ field }) => (
-        <div>
+        <div className={classNames(containerClass ?? '')}>
           <textarea
             className={classNames(
               'form-control',

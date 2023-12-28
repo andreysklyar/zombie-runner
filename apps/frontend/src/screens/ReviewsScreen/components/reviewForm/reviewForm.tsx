@@ -82,22 +82,18 @@ const ReviewForm: React.FunctionComponent<Props> = () => {
         type="text"
         name="name"
         placeholder="Name"
+        containerClass='mb-3'
         control={control}
         error={errors.name} />
       <ControledTextarea
         type="text"
         name="review"
         placeholder="Feedback"
+        containerClass='mb-3'
         control={control}
         error={errors.review} />
-      {/* todo: update disabled condition  */}
-      <div>
-        <button className='btn btn-primary' type="submit" disabled={ loading || aiLoading }> 
-          Submit
-        </button>
-      </div>
       {gpt && (
-        <div>
+        <div className="btn-group btn-group-sm mb-5" role="group">
           <div
               className={classNames(
                 aiLoading
@@ -120,6 +116,12 @@ const ReviewForm: React.FunctionComponent<Props> = () => {
           </div>
         </div>
       )}
+      {/* todo: update disabled condition  */}
+      <div>
+        <button className='btn btn-primary' type="submit" disabled={ loading || aiLoading }> 
+          Submit
+        </button>
+      </div>
       <div>
         {loading && (
           <div>addding new item.....</div>
@@ -135,13 +137,3 @@ const ReviewForm: React.FunctionComponent<Props> = () => {
 };
 
 export default ReviewForm;
-/*
-
-    const {loading, reviews} = useTypedSelector(reviewsSelector);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchReviews());
-    }, []);
-
-*/
