@@ -8,6 +8,7 @@ import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useDispatch } from '../../../../hooks/dispatch';
 import { fetchReviews } from '../../../../store/thunks/reviews-thunk';
 import { addReviewSelector } from '../../../../store/selectors/addReview';
+import Spinner from '../../../../components/Spinner/Spinner';
 
 interface Props {}
 
@@ -19,22 +20,18 @@ const ReviewsList: React.FunctionComponent<Props> = () => {
 
     useEffect(() => {
         // TODO: Any
-        dispatch<any>(fetchReviews());
+        dispatch<any>(fetchReviews())
+        // TODO: remove unwrap
+            .unwrap()
+            .then((res: any) => {
+                console.log('fetchReviews');
+            });
     }, [dispatch]);
-
-    useEffect(() => {
-        if (review?.id) {
-            console.log(review, ' : last review');
-            dispatch<any>(fetchReviews());
-        }
-    }, [review, dispatch]);
 
     return (
         <>
             {loading ? (
-                <div className=''>
-                    spinner
-                </div>
+                <Spinner />
             ) : (reviews.length) ? ( 
                 <div className={styles.reviewsList}>
                     {reviews.map((review: Review, idx: number) => {

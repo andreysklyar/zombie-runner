@@ -80,5 +80,9 @@ export interface AiReview {
     loading: boolean
     error: string | null
 }
+export interface DeleteReviewState {
+    loading: boolean
+    error: string | null
+}
 
-export type CreateReviewAction = FetchAddReview | FetchAddReviewSuccess | FetchAddReviewError
+//export type CreateReviewAction = FetchAddReview | FetchAddReviewSuccess | FetchAddReviewError

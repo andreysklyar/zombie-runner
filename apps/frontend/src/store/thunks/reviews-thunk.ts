@@ -18,13 +18,20 @@ export const createReview = createAsyncThunk(
     'reviews/add',
     async (newReview: NewReview) => {
         const response = await axios.post<Review>(`${process.env.REACT_APP_API_URL}/review`, newReview);
-        console.log(response, ' reviews/add');
+    }
+);
+
+export const deleteReview = createAsyncThunk(
+    'reviews/delete',
+    async (id: string) => {
+        const response = await axios.delete(`${process.env.REACT_APP_API_URL}/review/${id}`);
+        return response.data;
     }
 );
 
 export const generateReview = createAsyncThunk(
     'review/generate',
-    async (isPositive: boolean) => {
+    async (isPositive: boolean, {rejectWithValue}) => {
         const openai = new OpenAI({
           apiKey: process.env.REACT_APP_CHAT_GPT,
           dangerouslyAllowBrowser: true
@@ -48,8 +55,8 @@ export const generateReview = createAsyncThunk(
           return response.choices[0].message.content || '';
         }
 
-        catch (e) {
-          console.log(e);
+        catch (e: any) {
+          return rejectWithValue(e?.error?.message || 'Server error');
         }
     }
 );

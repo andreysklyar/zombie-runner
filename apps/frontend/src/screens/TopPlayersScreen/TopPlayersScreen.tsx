@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Header from '../../components/header/Header';
-import PlayersList from './components/PlayersList';
+import PlayersList from './components/PlayersList/PlayersList';
 
 export const TopPlayersScreen: FunctionComponent = () => {
     return (
